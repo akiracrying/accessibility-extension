@@ -18,8 +18,19 @@ browser.runtime.onMessage.addListener(data => {
         trigger,
 
     } = data;
-    let URL = window.location.href
-    if (trigger === "autoFill") {
+    switch (trigger){
+        case "mouseKeyboard":
+            mouseMover()
+            break
+        case "highContast":
+            highContraster()
+            break
+        case "fontSizer":
+            fontSizer()
+            break
+        case "optimizer":
+            optimizer()
+            break
 
     }
 
