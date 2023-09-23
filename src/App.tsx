@@ -20,12 +20,6 @@ import ContrastIcon from '@mui/icons-material/Contrast';
 import ChromeReaderModeIcon from '@mui/icons-material/ChromeReaderMode';
 import CampaignIcon from '@mui/icons-material/Campaign';
 
-const colors = {
-    aa : "#0077FF",
-    bb : "#4267B2",
-    cc : "#1DA1F2"
-}
-
 
 function getCurrentTab() {
     // @ts-ignore
@@ -43,6 +37,15 @@ async function foo() {
 
 }
 
+async function actionHandler(trigger) {
+    const tabInfo = await getCurrentTab();
+    const [{id: tabId}] = tabInfo;
+    console.log(tabId)
+    // @ts-ignore
+    browser.tabs.sendMessage(tabId, {
+        trigger: trigger
+    });
+}
 function App() {
     const iconStyles = {
         fontSize: '60px', // Adjust the fontSize of the MouseIcon to make it bigger
@@ -51,7 +54,9 @@ function App() {
     <div className = "info">
         <div className= "buttons">
             <IconButton className="circle-button" color="primary">
-                <MouseIcon fontSize="large" style={iconStyles}/>
+                <MouseIcon fontSize="large" style={iconStyles}
+               onClick={() => actionHandler("mouseKeyboard")}
+                />
             </IconButton>
             <IconButton className="circle-button" color="primary">
                 <FormatSizeIcon fontSize="large" style={iconStyles} />
