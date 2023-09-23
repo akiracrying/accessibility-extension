@@ -11,9 +11,8 @@ function eventChecker(elem) {
         }
     }
 }
-//asfas
 
-browser.runtime.onMessage.addListener(data => {
+browser.runtime.onMessage.addEventListener(data => {
     const {
         trigger,
 
@@ -35,4 +34,6 @@ browser.runtime.onMessage.addListener(data => {
     }
 
 });
+
+
 
