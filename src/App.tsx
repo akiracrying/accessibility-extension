@@ -1,20 +1,7 @@
-import {useState} from "react";
-import {
-    Alert,
-    Button,
-    Checkbox,
-    FormControlLabel,
-    FormGroup,
-    Grid, Input,
-    TextField,
-    Typography
-} from "@mui/material";
+
 import "./index.css"
-import $ from 'jquery';
 import IconButton from '@mui/material/IconButton';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
 import MouseIcon from '@mui/icons-material/Mouse';
-import RadioFilter from "./theme/RadioFilter";
 import FormatSizeIcon from '@mui/icons-material/FormatSize';
 import ContrastIcon from '@mui/icons-material/Contrast';
 import ChromeReaderModeIcon from '@mui/icons-material/ChromeReaderMode';
@@ -26,18 +13,7 @@ function getCurrentTab() {
     return browser.tabs.query({ currentWindow: true, active: true });
 }
 
-async function foo() {
-    const tabInfo = await getCurrentTab();
-    const [{ id: tabId }] = tabInfo;
-    console.log(tabId)
-    // @ts-ignore
-    browser.tabs.sendMessage(tabId, {
-
-    });
-
-}
-
-async function actionHandler(trigger) {
+async function callAction(trigger) {
     const tabInfo = await getCurrentTab();
     const [{id: tabId}] = tabInfo;
     console.log(tabId)
@@ -55,20 +31,28 @@ function App() {
         <div className= "buttons">
             <IconButton className="circle-button" color="primary">
                 <MouseIcon fontSize="large" style={iconStyles}
-               onClick={() => actionHandler("mouseKeyboard")}
+                onClick={() => callAction('mouseKeyboard')}
                 />
             </IconButton>
             <IconButton className="circle-button" color="primary">
-                <FormatSizeIcon fontSize="large" style={iconStyles} />
+                <FormatSizeIcon fontSize="large" style={iconStyles}
+                                onClick={() => callAction('fontSizer')}
+                />
             </IconButton>
             <IconButton className="circle-button" color="primary">
-                <ContrastIcon fontSize="large" style={iconStyles}/>
+                <ContrastIcon fontSize="large" style={iconStyles}
+                          onClick={() => callAction('contrast')}
+                />
             </IconButton>
             <IconButton className="circle-button" color="primary">
-                <ChromeReaderModeIcon fontSize="large" style={iconStyles}/>
+                <ChromeReaderModeIcon fontSize="large" style={iconStyles}
+                  onClick={() => callAction('optimizer')}
+                />
             </IconButton>
             <IconButton className="circle-button" color="primary">
-                <CampaignIcon fontSize="large" style={iconStyles} />
+                <CampaignIcon fontSize="large" style={iconStyles}
+                  onClick={() => callAction('speaker')}
+                />
             </IconButton>
         </div>
     </div>

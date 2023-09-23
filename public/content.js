@@ -1,17 +1,3 @@
-import {mouseMoverOn, mouseMoverOff} from './mouse_mover'
-
-function eventChecker(elem) {
-    console.log("")
-    for (const key in elem) {
-        if (/^on/.test(key)) {
-            const eventType = key.substr(2);
-            elem.addEventListener(eventType, (evt) => {
-                console.log(evt);//evt.type);
-            });
-        }
-    }
-}
-
 let conditions = {
     mouse: 0,
     contrast: 0,
@@ -21,32 +7,60 @@ let conditions = {
 }
 
 browser.runtime.onMessage.addListener(data => {
-    const {
-        trigger,
+    try {
+        const {
+            trigger
+        } = data;
 
-    } = data;
-    switch (trigger) {
-        case "mouseKeyboard":
-            if (conditions.mouse === 0) {
-                conditions.mouse = 1
-                mouseMoverOn()
-            } else {
-                mouseMoverOff()
-            }
-            mouseMover()
-            break
-        case "highContast":
-            highContraster()
-            break
-        case "fontSizer":
-            fontSizer()
-            break
-        case "optimizer":
-            optimizer()
-            break
+        switch (trigger) {
+            case 'mouseKeyboard':
+                if (conditions.mouse === 0) {
+                    conditions.mouse = 1
+                    console.log("mouse")
+                    mouseMoverOn()
+                } else {
+                    mouseMoverOff()
+                }
+                break
+            case "contrast":
+                if (conditions.contrast === 0) {
+                    conditions.contrast = 1
+                    console.log("contrast")
 
+                    changeColor()
+                } else {
+                    conditions.contrast = 0
+                    changeColor()
+                }
+                break
+            case "fontSizer":
+                if (conditions.font === 0) {
+                    console.log("font")
+                    conditions.font = 1
+                    changeFontSizeOn(10)
+                } else {
+                    conditions.font = 0
+                    changeFontSizeOff()
+                }
+                break
+            case "optimizer":
+                //optimizer()
+                break
+            case "speaker":
+                if (conditions.speaker === 0) {
+                    console.log("speaker")
+                    conditions.speaker = 1
+                    speakerOn()
+                } else {
+                    conditions.speaker = 0
+                    speakerOff()
+                }
+                break
+
+        }
+    }catch (error){
+        console.error('Error in listener:', error);
     }
-
 });
 
 
