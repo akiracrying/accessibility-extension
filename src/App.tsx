@@ -15,9 +15,9 @@ import $ from 'jquery';
 import RadioFilter from "./theme/RadioFilter";
 
 const colors = {
-    vk : "#0077FF",
-    fb : "#4267B2",
-    tw : "#1DA1F2"
+    aa : "#0077FF",
+    bb : "#4267B2",
+    cc : "#1DA1F2"
 }
 
 

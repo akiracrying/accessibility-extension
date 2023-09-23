@@ -13,10 +13,7 @@
   },
   "content_scripts": [{
     "js": ["content.js"],
-    "matches": [
-      "https://www.*.*/*",
-      "http://www.*.*/*"
-    ]
+    "matches": ["<all_urls>"]
   }],
   "icons": {
     "48": "logo192.png",
@@ -27,8 +24,5 @@
     "bookmarks",
     "scripting"
   ],
-  "host_permissions": [
-    "https://www.*.*/*",
-    "http://www.*.*/*"
-  ]
+  "host_permissions": ["<all_urls>"]
 }

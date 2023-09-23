@@ -11,19 +11,12 @@ function eventChecker(elem) {
         }
     }
 }
+//asfas
 
-async function vkFiller(){
-}
 browser.runtime.onMessage.addListener(data => {
     const {
         trigger,
-        value,
-        code,
-        name,
-        surname,
-        birthday,
-        gender,
-        password
+
     } = data;
     let URL = window.location.href
     if (trigger === "autoFill") {
