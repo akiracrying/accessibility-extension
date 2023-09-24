@@ -13,7 +13,9 @@ code {
 }
 .info {
   background-color: #ffffff;
-  padding-left: 20px;
-  width: 320px;
-  height: 375px;
+  width: 400px;
+  height: 90px;
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
 }
