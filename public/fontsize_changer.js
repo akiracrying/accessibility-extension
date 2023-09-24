@@ -1,15 +1,8 @@
-let originalFontSize; // Добавляем переменную для хранения исходного размера шрифта
-let pxPointsChange
-function changeFontSizeOn(pointToChange) {
-    const allElements = document.querySelectorAll('*');
-    pxPointsChange = pointToChange
-    // Если исходный размер шрифта еще не был установлен, сохраняем его
-    if (!originalFontSize) {
-        const computedStyles = window.getComputedStyle(allElements[0]); // Получаем стиль первого элемента
-        originalFontSize = parseFloat(computedStyles.fontSize);
-    }
+let pxPointsChange;
 
-    changeFontSize(pointToChange);
+function changeFontSizeOn(pointToChange) {
+    pxPointsChange = pointToChange;
+    changeFontSize(pointToChange)
 }
 
 function changeFontSizeOff() {
@@ -20,10 +13,15 @@ function changeFontSizeOff() {
 function changeFontSize(newSize) {
     const allElements = document.querySelectorAll('*');
     allElements.forEach((element) => {
-        const currentFontSize = parseFloat(window.getComputedStyle(element).fontSize);
-        if (!isNaN(currentFontSize)) {
-            const newFontSizeValue = currentFontSize + newSize;
+        const computedStyles = window.getComputedStyle(element);
+        const currentFontSize = computedStyles.fontSize;
+        const currentFontSizeValue = parseFloat(currentFontSize);
+        if (!isNaN(currentFontSizeValue)) {
+            const newFontSizeValue = currentFontSizeValue + newSize;
             element.style.fontSize = newFontSizeValue + 'px';
         }
     });
 }
+
+// Вызываем функцию с новым размером шрифта (например, 2px увеличит на 2 пикселя)
+// changeFontSize(2);
