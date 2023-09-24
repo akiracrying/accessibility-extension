@@ -2,11 +2,22 @@ let mouseX = 0;
 let mouseY = 0;
 let eventType = 'keydown'
 
+let container = document.getElementById('container');
+
+let imgElement = document.createElement('img');
+imgElement.src = "https://media.geeksforgeeks.org/wp-content/uploads/20200319212118/cursor2.png"
+
+let fakeCursor;
+
 function mouseMoverOn() {
+    fakeCursor = document.createElement('cursor')
+    fakeCursor.appendChild(imgElement)
+    container.appendChild(fakeCursor);
     document.addEventListener(eventType, eventMove)
 }
 
 function mouseMoverOff() {
+    container.removeChild(fakeCursor)
     document.removeEventListener(eventType, eventMove)
 }
 
@@ -32,9 +43,6 @@ let eventMove = (event) => {
 
 // Функция для перемещения курсора мыши
 function moveMouse(x, y) {
-    const event = new MouseEvent('mousemove', {
-        clientX: x,
-        clientY: y,
-    });
-    document.dispatchEvent(event);
+    fakeCursor.style.left = x + 'px';
+    fakeCursor.style.top = y + 'px';
 }

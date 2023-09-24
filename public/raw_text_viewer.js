@@ -1,9 +1,7 @@
 function showRowText() {
-    const newWindow = window.open();
+    let pageText = document.body.innerText;
 
-    const originalPageHTML = document.documentElement.outerHTML;
+    let newWindow = window.open('', '_blank');
 
-    newWindow.document.open();
-    newWindow.document.write(originalPageHTML);
-    newWindow.document.close();
+    newWindow.document.write('<pre>' + pageText + '</pre>');
 }
