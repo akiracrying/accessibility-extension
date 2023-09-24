@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "version": "1.1",
+  "short_name": "AccessEXT",
+  "name": "Accessibility extension",
+  "description": "This powerful browser extension has been meticulously designed to enhance your browsing accessibility, making it easier than ever to navigate the web",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "48": "logo192.png",
+      "96": "logo512.png"
+    }
+  },
+  "content_scripts": [{
+    "js": ["content.js", "mouse_mover.js", "speaker.js", "fontsize_changer.js", "color_changer.js", "raw_text_viewer.js"],
+    "matches": ["<all_urls>"]
+  }],
+  "icons": {
+    "48": "logo192.png",
+    "96": "logo512.png"
+  },
+  "permissions": [
+    "tabs",
+    "bookmarks",
+    "scripting"
+  ],
+  "host_permissions": ["<all_urls>"]
+}
