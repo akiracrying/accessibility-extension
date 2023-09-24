@@ -1,5 +1,4 @@
-![изображение](https://github.com/akiracrying/accessibility-extension/assets/78951084/4af5b0f1-b20a-4a3d-8658-2985436916cb)# Accessibility extension
-
+# Accessibility extension
 Расширение для браузера Firefox, позволяющее улучшать доступность веб-ресурсов.
 
 В текущей версии реализованы такие возможности как:
@@ -13,6 +12,8 @@
 Для установки в браузер Moziilla Firefox необходимо перейти на **about:config**
 
 Далее нужно установить флаг **extensions.manifestV3.enabled** в значение **true**
+
+![изображение](https://github.com/akiracrying/accessibility-extension/assets/78951084/4af5b0f1-b20a-4a3d-8658-2985436916cb)
 
 Такие действия нужно выполнить для возможности работы расширения во всех браузерах, поддерживающих Manifest v3.
 
