@@ -9,7 +9,6 @@ function changeFontSizeOff() {
     changeFontSize(-pxPointsChange);
 }
 
-// Устанавливаем новый размер шрифта
 function changeFontSize(newSize) {
     const allElements = document.querySelectorAll('*');
     allElements.forEach((element) => {
@@ -23,5 +22,4 @@ function changeFontSize(newSize) {
     });
 }
 
-// Вызываем функцию с новым размером шрифта (например, 2px увеличит на 2 пикселя)
-// changeFontSize(2);
+//

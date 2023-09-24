@@ -28,16 +28,16 @@ let eventMove = (event) => {
     switch (event.key) {
         case 'ArrowLeft':
             console.log("asd")
-            mouseX -= delta; // Изменяйте значение по X как вам нужно
+            mouseX -= delta;
             break;
         case 'ArrowRight':
-            mouseX += delta; // Изменяйте значение по X как вам нужно
+            mouseX += delta;
             break;
         case 'ArrowUp':
-            mouseY -= delta; // Изменяйте значение по Y как вам нужно
+            mouseY -= delta;
             break;
         case 'ArrowDown':
-            mouseY += delta; // Изменяйте значение по Y как вам нужно
+            mouseY += delta;
             break;
         case 'Enter':
             let tmp = document.elementFromPoint(mouseX, mouseY)

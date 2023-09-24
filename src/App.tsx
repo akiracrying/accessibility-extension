@@ -24,7 +24,7 @@ async function callAction(trigger) {
 }
 function App() {
     const iconStyles = {
-        fontSize: '60px', // Adjust the fontSize of the MouseIcon to make it bigger
+        fontSize: '60px',
     };
   return (
     <div className = "info">

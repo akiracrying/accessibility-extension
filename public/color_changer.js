@@ -1,21 +1,17 @@
 function changeColor() {
-    var elementsToChange = document.querySelectorAll('*'); // Выбираем все элементы на странице
+    var elementsToChange = document.querySelectorAll('*');
 
     elementsToChange.forEach(function(element) {
-        // Меняем цвета текста и фона для всех элементов
         element.style.color = element.style.color === 'black' ? 'white' : 'black';
         element.style.backgroundColor = element.style.backgroundColor === 'white' ? 'black' : 'white';
     });
 }
 
-// Функция, которая изменяет цвет текста и фона элемента
 function changeContrastColors(element) {
-    // Получаем текущие цвета текста и фона
     const computedStyles = window.getComputedStyle(element);
     const currentTextColor = computedStyles.color;
     const currentBackgroundColor = computedStyles.backgroundColor;
 
-    // Функция для определения контрастного цвета
     function getContrastColor(color) {
         const hexColor = color.replace(/rgba?\(|\)|\s/g, '').split(',');
         const r = parseInt(hexColor[0]);
@@ -23,10 +19,9 @@ function changeContrastColors(element) {
         const b = parseInt(hexColor[2]);
         const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
-        return brightness >= 128 ? 'black' : 'white'; // Выбираем контрастный цвет
+        return brightness >= 128 ? 'black' : 'white';
     }
 
-    // Устанавливаем контрастные цвета текста и фона
     element.style.color = getContrastColor(currentTextColor);
     element.style.backgroundColor = getContrastColor(currentBackgroundColor);
 }

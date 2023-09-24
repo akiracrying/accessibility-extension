@@ -11,7 +11,7 @@ function speakerOn() {
         const utterance = new SpeechSynthesisUtterance(textFromPage);
         synth.speak(utterance);
     } else {
-        alert('Web Speech API не поддерживается в вашем браузере.');
+        alert('Web Speech API are not supported.');
     }
 }
 
