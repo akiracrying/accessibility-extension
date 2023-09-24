@@ -13,12 +13,13 @@ browser.runtime.onMessage.addListener(data => {
         } = data;
 
         switch (trigger) {
-            case 'mouseKeyboard':
+            case 'mouse':
                 if (conditions.mouse === 0) {
                     conditions.mouse = 1
                     console.log("mouse")
                     mouseMoverOn()
                 } else {
+                    conditions.contrast = 0
                     mouseMoverOff()
                 }
                 break
@@ -26,7 +27,6 @@ browser.runtime.onMessage.addListener(data => {
                 if (conditions.contrast === 0) {
                     conditions.contrast = 1
                     console.log("contrast")
-
                     changeColor()
                 } else {
                     conditions.contrast = 0
@@ -44,7 +44,14 @@ browser.runtime.onMessage.addListener(data => {
                 }
                 break
             case "optimizer":
-                //optimizer()
+                if (conditions.optimizer === 0) {
+                    console.log("optimizer")
+                    conditions.optimizer = 1
+                    showRowText()
+                } else {
+                    conditions.optimizer = 0
+                    showRowText()
+                }
                 break
             case "speaker":
                 if (conditions.speaker === 0) {

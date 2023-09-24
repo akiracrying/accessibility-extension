@@ -1,48 +1,55 @@
 let mouseX = 0;
 let mouseY = 0;
 let eventType = 'keydown'
+const delta = 3
 
-let container = document.getElementById('container');
 
-let imgElement = document.createElement('img');
-imgElement.src = "https://media.geeksforgeeks.org/wp-content/uploads/20200319212118/cursor2.png"
-
-let fakeCursor;
+let img = document.createElement('img');
+img.id = "AccessabilityCursorID"
+img.src = "https://media.geeksforgeeks.org/wp-content/uploads/20200319212118/cursor2.png"
+img.style.position = "absolute"
+img.style.width = "10px"
+img.style.height = "15px"
+img.style.pointerEvents = "none"
+img.style.zIndex = "99999999"
 
 function mouseMoverOn() {
-    fakeCursor = document.createElement('cursor')
-    fakeCursor.appendChild(imgElement)
-    container.appendChild(fakeCursor);
+
+    document.body.appendChild(img)
     document.addEventListener(eventType, eventMove)
 }
 
 function mouseMoverOff() {
-    container.removeChild(fakeCursor)
+    document.body.removeChild(img)
     document.removeEventListener(eventType, eventMove)
 }
 
 let eventMove = (event) => {
     switch (event.key) {
         case 'ArrowLeft':
-            mouseX -= 10; // Изменяйте значение по X как вам нужно
+            console.log("asd")
+            mouseX -= delta; // Изменяйте значение по X как вам нужно
             break;
         case 'ArrowRight':
-            mouseX += 10; // Изменяйте значение по X как вам нужно
+            mouseX += delta; // Изменяйте значение по X как вам нужно
             break;
         case 'ArrowUp':
-            mouseY -= 10; // Изменяйте значение по Y как вам нужно
+            mouseY -= delta; // Изменяйте значение по Y как вам нужно
             break;
         case 'ArrowDown':
-            mouseY += 10; // Изменяйте значение по Y как вам нужно
+            mouseY += delta; // Изменяйте значение по Y как вам нужно
             break;
+        case 'Enter':
+            let tmp = document.elementFromPoint(mouseX, mouseY)
+            console.log('enter')
+            tmp.click()
+            break
     }
 
-    // Устанавливаем новое положение курсора мыши
     moveMouse(mouseX, mouseY);
 }
 
-// Функция для перемещения курсора мыши
 function moveMouse(x, y) {
-    fakeCursor.style.left = x + 'px';
-    fakeCursor.style.top = y + 'px';
+    img.style.left = x + 'px';
+    img.style.top = y + 'px';
 }

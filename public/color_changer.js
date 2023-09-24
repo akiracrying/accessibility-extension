@@ -1,9 +1,10 @@
 function changeColor() {
-    // Получаем все элементы на странице (может потребоваться фильтрация)
-    const allElements = document.querySelectorAll('*');
-    // Проходим по всем элементам и меняем цвета
-    allElements.forEach((element) => {
-        changeContrastColors(element);
+    var elementsToChange = document.querySelectorAll('*'); // Выбираем все элементы на странице
+
+    elementsToChange.forEach(function(element) {
+        // Меняем цвета текста и фона для всех элементов
+        element.style.color = element.style.color === 'black' ? 'white' : 'black';
+        element.style.backgroundColor = element.style.backgroundColor === 'white' ? 'black' : 'white';
     });
 }
 

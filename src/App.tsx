@@ -31,7 +31,7 @@ function App() {
         <div className= "buttons">
             <IconButton className="circle-button" color="primary">
                 <MouseIcon fontSize="large" style={iconStyles}
-                onClick={() => callAction('mouseKeyboard')}
+                onClick={() => callAction('mouse')}
                 />
             </IconButton>
             <IconButton className="circle-button" color="primary">
